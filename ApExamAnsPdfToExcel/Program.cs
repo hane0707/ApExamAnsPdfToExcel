@@ -15,7 +15,8 @@ namespace ApExamAnsPdfToExcel
     class Program
     {
         static string DirPath = System.IO.Path.GetDirectoryName(System.IO.Path.GetFullPath(Environment.GetCommandLineArgs()[0]));
-        static string ResultFilePath = DirPath + @"\応用情報技術者試験過去問解答.xlsx";
+        static DirectoryInfo DirParentPath = Directory.GetParent(DirPath);
+        static string ResultFilePath = DirParentPath + @"\応用情報技術者試験過去問解答.xlsx";
 
         static void Main(string[] args)
         {
@@ -38,7 +39,7 @@ namespace ApExamAnsPdfToExcel
                 Console.WriteLine("ファイル名を入力してください。");
                 Console.WriteLine("　※処理終了：[n]");
                 string pdfFile = Console.ReadLine();
-                pdfFilePath = DirPath + @"\" + pdfFile;
+                pdfFilePath = DirParentPath + @"\" + pdfFile;
 
                 if (String.IsNullOrEmpty(pdfFile))
                     continue;
